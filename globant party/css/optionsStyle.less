@@ -1,0 +1,91 @@
+@import 'normalize.css';
+
+html
+{
+	font-size: 62.5%
+}
+
+.fix()
+{
+	&:before,
+	&:after
+	{
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+
+	&:after
+	{
+		clear: both;
+	}
+}
+
+body
+{
+	background: url('../images/bg.png');
+	background-size: cover;
+	background-position: 0 -200px;
+	font-size: 1.6rem;
+}
+
+input
+{
+	border: 1px solid gray;
+	padding: .5rem;
+}
+
+a
+{
+	color: white;
+	padding: 1rem;
+	text-decoration: none;
+	display: inline-block;
+
+}
+
+
+#saveBtn
+{
+	background: fadeout(greenyellow, 50%);
+
+	&:hover
+	{
+		background: fadeout(greenyellow, 40%);
+	}
+}
+
+#deleteDB
+{
+	background: fadeout(orange, 50%);
+
+	&:hover
+	{
+		background: fadeout(orange, 40%);
+	}
+}
+
+.inputWrapper
+{
+	margin: 2%;
+	padding: 2%;
+	display: block;
+	background: fadeout(white, 50%);
+	.fix();
+
+	label
+	{
+		width: 100%;
+		float: left;
+		height: 3rem;
+		line-height: 3rem;
+		.fix();
+	}
+
+	input
+	{
+		width: 70%;
+		float: right;
+		.fix();
+		background: fadeout(white, 20%);
+	}
+}

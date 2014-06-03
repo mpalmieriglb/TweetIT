@@ -1,0 +1,1 @@
+See Configuration Management Plan (CM Plan) for development definition (section 5).

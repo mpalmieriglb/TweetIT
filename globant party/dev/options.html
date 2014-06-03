@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TweetIt - Setup</title>
+	  
+    <link rel="stylesheet/less" type="text/css" rel="stylesheet" href="options.less">
+	<script type="text/javascript" src="less-1.3.3.min.js"></script>
+    <script type="text/javascript" src="jquery-2.0.2.min.js"></script>
+    <!--<script type="text/javascript" src="app.js"></script>-->
+	<script type="text/javascript" src="scripts_options.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <img class="right" src="glb.png" alt="Globant">
+    </div>
+	
+    <div id="content">
+	
+		<div class="tabs">
+			<a href="#" class="one selected">Options</a>
+			
+			<a href="#" class="two">Style</a>
+		</div>
+		
+	<form id="options_form">
+      <div class="half tab one">
+        <div>
+          <label class="bold" for="field01">Event Hashtag</label>
+          <input type="text" id="field01" name="event_hash">
+		  <p class="description second-row">#Hashtag to display at the bottom moving sign. Leave blank to hide it.</p>
+        </div>
+        <div>
+          <label class="bold" for="field02">Show tweets with... </label>
+          <textarea id="field02" name="query" required></textarea>
+          <p class="description second-row">Write the #hashtags, @usernames or keywords that you want to find. <br />Example: @globant #NewYear Party </p>
+        </div>
+		
+        <div>
+          <label class="bold" for="field04">Hide tweets with... </label>
+          <textarea id="field04" name="word_filter"></textarea>
+          <p class="description second-row">Deny tweets that contains these words<br />Example: Boring Bad #LetsGoHome</p>
+        </div>
+		<div>
+          <label class="bold" for="field06">Highlight tweets of @</label>
+          <textarea type="text" id="field06" name="highlight"></textarea>
+		  <p class="description second-row">Write the username without the @. Separate them by a space.<br />Example: globant google</p>
+        </div>
+		  
+		  <div>
+          <label class="bold">Tweets</label>
+       
+		
+		  <input id="tweetQuantity" type="number" name="quantity" min="1" max="5" value="5" required>
+		    <p class="description">Pick how many tweets you want to show</p>
+		</div>
+		<div>
+          <label class="bold" for="updateInterval">Update interval</label>
+		  <input id="updateInterval" type="number" name="updateInterval" min="5" max="30" value="5" step="5" required> 
+		  <p class="description second-row">Seconds</p>
+		</div>
+        
+		
+      </div>
+	
+      <div class="half tab two">
+		  <h3 class="bold clear">Background</h3>
+		  <div class="padding">
+			
+			<label class="bold">Color</label>
+			<div class="color background">
+			  <input type="radio" id="radio01" name="bg_color" value="green">
+			  <input type="radio" id="radio02" name="bg_color" value="black">
+			  <input type="radio" id="radio03" name="bg_color" value="white">
+			  <input type="radio" id="radio04" name="bg_color" value="gray">
+			<!--</div>
+			<div class="second-row">-->
+			  <input type="radio" id="radio05" name="bg_color" value="red">
+			  <input type="radio" id="radio06" name="bg_color" value="orange">
+			  <input type="radio" id="radio07" name="bg_color" value="yellow">
+			  <input type="radio" id="radio08" name="bg_color" value="aqua">
+			<!--</div>
+			<div class="second-row">-->
+			  <input type="radio" id="radio09" name="bg_color" value="blue">
+			  <input type="radio" id="radio10" name="bg_color" value="purple">
+			  <input type="radio" id="radio11" name="bg_color" value="violet">
+			  <input type="radio" id="radio12" name="bg_color" value="pink">
+			
+			</div>
+			
+		  	<!--<div>
+			  <label for="field_image_file">Image file:</label>
+			  <input id="field_image_file" name="field_image_file" type="file" accept="image/*">
+			  <span class="description second-row field_image_file">URL of the resource</span>
+			</div>-->
+		  </div>
+		  <div class="clear">
+			  <label class="bold" for="field03">Image URL</label>
+			  <input type="text" id="field03" name="bg_image">
+			  <p class="description">URL of the resource</p>
+			</div>
+        <h3 class="bold clear">Font color</h3>
+        <div class="padding">
+          <label class="bold">Username color</label>
+			<div class="color title">
+			  <input type="radio" id="radio13" name="title_color" value="green">
+			  <input type="radio" id="radio14" name="title_color" value="black">
+			  <input type="radio" id="radio15" name="title_color" value="white">
+			  <input type="radio" id="radio16" name="title_color" value="gray">
+			
+			  <input type="radio" id="radio17" name="title_color" value="red">
+			  <input type="radio" id="radio18" name="title_color" value="orange">
+			  <input type="radio" id="radio19" name="title_color" value="yellow">
+			  <input type="radio" id="radio20" name="title_color" value="aqua">
+			
+			  <input type="radio" id="radio21" name="title_color" value="blue">
+			  <input type="radio" id="radio22" name="title_color" value="purple">
+			  <input type="radio" id="radio23" name="title_color" value="violet">
+			  <input type="radio" id="radio24" name="title_color" value="pink">
+			</div>
+        </div>
+        <div class="padding">
+          <label class="bold">Tweet text color</label>
+			<div class="color text">
+			  <input type="radio" id="radio25" name="text_color" value="green">
+			  <input type="radio" id="radio26" name="text_color" value="black">
+			  <input type="radio" id="radio27" name="text_color" value="white">
+			  <input type="radio" id="radio28" name="text_color" value="gray">
+			
+			  <input type="radio" id="radio29" name="text_color" value="red">
+			  <input type="radio" id="radio30" name="text_color" value="orange">
+			  <input type="radio" id="radio31" name="text_color" value="yellow">
+			  <input type="radio" id="radio32" name="text_color" value="aqua">
+			
+			  <input type="radio" id="radio33" name="text_color" value="blue">
+			  <input type="radio" id="radio34" name="text_color" value="purple">
+			  <input type="radio" id="radio35" name="text_color" value="violet">
+			  <input type="radio" id="radio36" name="text_color" value="pink">
+			</div>
+        </div>
+		  
+		  <div>
+          <label class="bold" for="field06">Font</label>
+		  <select id="fonts">
+			  <option value="arial">Arial</option>
+			  <option value="verdana">Verdana</option>
+			  <option value="dinalternate">DIN Alternate</option>
+			  <option value="helvetica">Helvetica</option>
+			  <option value="helveticaneue">Helvetica Neue</option>
+			  <option value="sketchblock">Sketch Block</option>
+		  </select>
+		  <p class="exampleText">Example Text</p>
+        </div>
+		  
+	
+		  <h3 class="bold clear">Preview</h3>
+		 <div id="liveExample">
+		
+			<div class="tweet">
+				
+				<div class="userInfo">
+					
+					<div class="image">
+						<img src="avatar.jpg" />
+					</div>
+					
+					<div class="name">
+						<p>John Doe</p>
+						<p>@johnDoe</p>
+					</div>
+	
+				</div>
+				
+				<div class="tweetInfo">
+					
+					<div class="text">
+						<p ng-bind-html="tweet.text | highlight">This is my first tweet!</p>
+					</div>
+				
+				</div>
+			
+			</div>	
+		
+		</div><!-- tweet example -->
+		  
+		  
+		  
+      </div>
+      
+		
+		
+		
+	
+		
+	
+	
+		
+		<div class="clear footer">
+        <input type="submit" id="btn_update" value="Save Options">
+		<a href="wall.html" target="_blank" class="gotoapp">Go To App</a>
+		<p class="inline"><a href="#" class="deleteDB">Clear database</a> of saved tweets</p>
+      </div>
+		
+		
+	</form>
+    </div>
+  </body>
+</html>

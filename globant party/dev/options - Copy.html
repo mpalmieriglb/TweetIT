@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <title>TweetIt - Setup</title>
+    <link rel="stylesheet" href="options.css">
+    <script type="text/javascript" src="jquery-2.0.2.min.js"></script>
+    <!--<script type="text/javascript" src="app.js"></script>-->
+	<script type="text/javascript" src="scripts_options.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <img class="left" src="logo.png" alt="TweetIt">
+      <img class="right" src="glb.png" alt="Globant">
+    </div>
+    <div id="content">
+      <div class="half">
+        <div>
+          <label class="bold" for="field01">Event hash:</label>
+          <input type="text" id="field01" name="event_hash">
+        </div>
+        <div>
+          <label class="bold" for="field02">Query:</label>
+          <textarea id="field02" name="query"></textarea>
+          <span class="description second-row">Example: #FlipThinking @Globant</span>
+        </div>
+        <label class="bold">Tweets:</label>
+        <span class="description">Pick how many tweets you want to show</span>
+		
+		
+		
+		
+        <ul class="horizontal second-row">
+          <li>
+			<input id="tweetQuantity" type="number" name="quantity" min="1" max="5">
+			<!--
+            <label for="radio37">1</label><br>
+            <input type="radio" id="radio37" name="tweets" value="1">
+			-->
+          </li>
+		  <!--
+          <li>
+            <label for="radio38">2</label><br>
+            <input type="radio" id="radio38" name="tweets" value="2">
+          </li>
+          <li>
+            <label for="radio39">3</label><br>
+            <input type="radio" id="radio39" name="tweets" value="3">
+          </li>
+          <li>
+            <label for="radio40">4</label><br>
+            <input type="radio" id="radio40" name="tweets" value="4">
+          </li>
+		  -->
+        </ul>
+        <div>
+          <label class="bold" for="field04">Filter:</label>
+          <textarea id="field04" name="word_filter"></textarea>
+          <span class="description second-row">Deny tweets that cotain these words</span>
+        </div>
+		<div>
+          <label class="bold" for="updateInterval">Update interval (sec):</label>
+		  <input id="updateInterval" type="number" name="updateInterval" min="1" max="10">
+		</div>
+        <div>
+          <label class="bold" for="field06">Highlight:</label>
+          <input type="text" id="field06" name="highlight">
+        </div>
+      </div>
+      <div class="half">
+			<label class="bold clear">Background:</label>
+			<label>Color:</label>
+			<div class="second-row">
+			  <label for="radio01" class="box green"></label>
+			  <input type="radio" id="radio01" name="bg_color" value="green">
+			  <label for="radio02" class="box black"></label>
+			  <input type="radio" id="radio02" name="bg_color" value="black">
+			  <label for="radio03" class="box white"></label>
+			  <input type="radio" id="radio03" name="bg_color" value="white">
+			  <label for="radio04" class="box gray"></label>
+			  <input type="radio" id="radio04" name="bg_color" value="gray">
+			</div>
+			<div class="second-row">
+			  <label for="radio05" class="box red"></label>
+			  <input type="radio" id="radio05" name="bg_color" value="red">
+			  <label for="radio06" class="box orange"></label>
+			  <input type="radio" id="radio06" name="bg_color" value="orange">
+			  <label for="radio07" class="box yellow"></label>
+			  <input type="radio" id="radio07" name="bg_color" value="yellow">
+			  <label for="radio08" class="box aqua"></label>
+			  <input type="radio" id="radio08" name="bg_color" value="aqua">
+			</div>
+			<div class="second-row">
+			  <label for="radio09" class="box blue"></label>
+			  <input type="radio" id="radio09" name="bg_color" value="blue">
+			  <label for="radio10" class="box purple"></label>
+			  <input type="radio" id="radio10" name="bg_color" value="purple">
+			  <label for="radio11" class="box violet"></label>
+			  <input type="radio" id="radio11" name="bg_color" value="violet">
+			  <label for="radio12" class="box pink"></label>
+			  <input type="radio" id="radio12" name="bg_color" value="pink">
+			</div>
+			<div>
+			  <label for="field03">Image URL:</label>
+			  <input type="text" id="field03" name="bg_image">
+			  <span class="description second-row">URL of the resource</span>
+			</div>
+		  	<!--<div>
+			  <label for="field_image_file">Image file:</label>
+			  <input id="field_image_file" name="field_image_file" type="file" accept="image/*">
+			  <span class="description second-row field_image_file">URL of the resource</span>
+			</div>-->
+		  
+        <label class="bold clear">Font color:</label>
+        <div>
+          <label>Title color:</label>
+			<div class="second-row">
+			  <label for="radio13" class="box green"></label>
+			  <input type="radio" id="radio13" name="title_color" value="green">
+			  <label for="radio14" class="box black"></label>
+			  <input type="radio" id="radio14" name="title_color" value="black">
+			  <label for="radio15" class="box white"></label>
+			  <input type="radio" id="radio15" name="title_color" value="white">
+			  <label for="radio16" class="box gray"></label>
+			  <input type="radio" id="radio16" name="title_color" value="gray">
+			</div>
+			<div class="second-row">
+			  <label for="radio17" class="box red"></label>
+			  <input type="radio" id="radio17" name="title_color" value="red">
+			  <label for="radio18" class="box orange"></label>
+			  <input type="radio" id="radio18" name="title_color" value="orange">
+			  <label for="radio19" class="box yellow"></label>
+			  <input type="radio" id="radio19" name="title_color" value="yellow">
+			  <label for="radio20" class="box aqua"></label>
+			  <input type="radio" id="radio20" name="title_color" value="aqua">
+			</div>
+			<div class="second-row">
+			  <label for="radio21" class="box blue"></label>
+			  <input type="radio" id="radio21" name="title_color" value="blue">
+			  <label for="radio22" class="box purple"></label>
+			  <input type="radio" id="radio22" name="title_color" value="purple">
+			  <label for="radio23" class="box violet"></label>
+			  <input type="radio" id="radio23" name="title_color" value="violet">
+			  <label for="radio24" class="box pink"></label>
+			  <input type="radio" id="radio24" name="title_color" value="pink">
+			</div>
+        </div>
+        <div>
+          <label>Text color:</label>
+			<div class="second-row">
+			  <label for="radio25" class="box green"></label>
+			  <input type="radio" id="radio25" name="text_color" value="green">
+			  <label for="radio26" class="box black"></label>
+			  <input type="radio" id="radio26" name="text_color" value="black">
+			  <label for="radio27" class="box white"></label>
+			  <input type="radio" id="radio27" name="text_color" value="white">
+			  <label for="radio28" class="box gray"></label>
+			  <input type="radio" id="radio28" name="text_color" value="gray">
+			</div>
+			<div class="second-row">
+			  <label for="radio29" class="box red"></label>
+			  <input type="radio" id="radio29" name="text_color" value="red">
+			  <label for="radio30" class="box orange"></label>
+			  <input type="radio" id="radio30" name="text_color" value="orange">
+			  <label for="radio31" class="box yellow"></label>
+			  <input type="radio" id="radio31" name="text_color" value="yellow">
+			  <label for="radio32" class="box aqua"></label>
+			  <input type="radio" id="radio32" name="text_color" value="aqua">
+			</div>
+			<div class="second-row">
+			  <label for="radio33" class="box blue"></label>
+			  <input type="radio" id="radio33" name="text_color" value="blue">
+			  <label for="radio34" class="box purple"></label>
+			  <input type="radio" id="radio34" name="text_color" value="purple">
+			  <label for="radio35" class="box violet"></label>
+			  <input type="radio" id="radio35" name="text_color" value="violet">
+			  <label for="radio36" class="box pink"></label>
+			  <input type="radio" id="radio36" name="text_color" value="pink">
+			</div>
+        </div>
+      </div>
+      <div class="clear">
+        <input type="button" id="btn_update" value="Save Options">
+      </div>
+    </div>
+  </body>
+</html>

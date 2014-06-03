@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>TweetIt</title>
+    <link rel="stylesheet" href="wall.css">
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="jquery.mustache.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body>
+    <div id="error-message">
+      <a href="#"><img src="cross.png" alt="X"></a><p></p>
+    </div>
+    <div id="container"></div>
+    <div id="footer">
+	  <h2><marquee style="margin-right:100px;">Official Hashtag: <span id="hash"></span></marquee></h2>
+	  <img src="logo.png" alt="TweetIt">
+    </div>
+    <script type="text/x-tmpl" id="view-tweet">
+    {{#tweets}}
+    <div class="item big {{klass}}">
+      <div>
+        <div class="frame"><img src="{{picture}}"></div>
+        <span class="name">{{name}}</span><br>
+        <span class="user">{{alias}}</span>
+      </div>
+      <div>
+        <p>{{text}}</p>{{#media}}<div class="media"><img src="{{media}}"></div>{{/media}}
+      </div>
+    </div>
+    {{/tweets}}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+body {
+  min-width: 557px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+input, textarea {
+	-webkit-appearance: none;
+  border: 2px solid #DDDDDD;
+  vertical-align: middle;
+  margin: 0;
+  font-size: 14px;
+}
+input[type=button], input[type=radio] {
+  cursor: pointer;
+}
+input[type=button] {
+  margin: 24px;
+  padding: 3px 10px;
+}
+input[type=button]:hover {
+  background-color: #AAAAAA;
+}
+input[type=text] {
+  width: 280px;
+  height: 24px;
+}
+textarea {
+  width: 280px;
+  height: 56px;
+}
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #DDDDDD;
+  background-color: #FFFFFF;
+  margin: 0 10px 0 2px;
+}
+input[type=radio]:checked {
+  border: 2px solid #AAAAAA;
+  background-color: #F2F2F2;
+}
+label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+  margin: 0.5em 0;
+}
+
+#header, #content {
+  clear: both;
+  padding: 0 5em;
+}
+#header {
+  padding-top: 1em;
+}
+#content {
+  padding-top: 3em;
+}
+
+.half {
+  width: 50%;
+  min-width: 390px;
+  float: left;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.bold {
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+  display: block;
+}
+
+.box {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #AAAAAA;
+  vertical-align: middle;
+  margin: 0.4em 0;
+}
+.description {
+  color: #888888;
+}
+.second-row {
+  display: block;
+  margin-left: 105px;
+}
+.error {
+  color: #E05252;
+  font-weight: bold;
+}
+.horizontal {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+.horizontal li {
+  display: inline-block;
+  text-align: center;
+}
+.horizontal label {
+  width: auto;
+  margin: 0;
+}
+.horizontal input {
+  margin: 0;
+}
+.green {
+  background-color: #BFD730;
+}
+.black {
+  background-color: #000000;
+}
+.white {
+  background-color: #FFFFFF;
+}
+.gray {
+  background-color: #888888;
+}
+.red {
+  background-color: #EE252A;
+}
+.orange {
+  background-color: #F68822;
+}
+.yellow {
+  background-color: #F7C016;
+}
+.aqua {
+  background-color: #29ADE4;
+}
+.blue {
+  background-color: #1369B3;
+}
+.purple {
+  background-color: #A058A0;
+}
+.violet {
+  background-color: #9898CB;
+}
+.pink {
+  background-color: #EC148E;
+}

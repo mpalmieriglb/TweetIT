@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>TweetIt</title>
+    <script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
+	<script type="text/javascript" src="chrome_ex_oauth.js"></script>
+	
+	
+	<script type="text/javascript">
+		var oauth = ChromeExOAuth.initBackgroundPage({
+			'request_url': 'https://api.twitter.com/oauth/request_token',
+			'authorize_url': 'https://api.twitter.com/oauth/authorize',
+			'access_url': 'https://api.twitter.com/oauth/access_token',
+			'consumer_key': '87vCyNAchkSePwKUyN94Cg',
+			'consumer_secret': '5qBoEaOafhymtXTTgMVyGUhAnWYKgJI6IXriRxWR0MU',
+			//'scope': <scope of data access, not used by all OAuth providers>,
+			'app_name': 'TweetIT2Mrks'
+		});
+		
+		
+			oauth.authorize(function() {
+			// ... Ready to fetch private data ...
+			
+		});
+
+	</script>
+	
+  </head>
+  <body>
+    
+  </body>
+</html>

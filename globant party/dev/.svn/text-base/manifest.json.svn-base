@@ -1,0 +1,25 @@
+{
+  "name": "TweetIt",
+  "description": "Twitter Wall",
+  "manifest_version": 2,
+  "version": "1.0",
+  "app": {
+    "launch": {
+      "local_path": "wall.html"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "128": "tweetit.png"
+  },
+  "web_accessible_resources": [
+    "glb.gif",
+    "border.png"
+  ],
+  "permissions": [
+    "storage",
+    "notifications",
+    "http://search.twitter.com/search.json",
+    "http://*/"
+  ]
+}

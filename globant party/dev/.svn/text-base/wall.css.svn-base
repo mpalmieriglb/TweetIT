@@ -1,0 +1,211 @@
+body {
+  min-width: 557px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+#error-message {
+  background: #E60000;
+  position: fixed;
+  width: 100%;
+  opacity: 0.8;
+  display: none;
+}
+#error-message > a {
+  float: left;
+  margin: 6px;
+}
+#error-message > p {
+  text-align: center;
+  margin: 1em 2em;
+  color: white;
+  font-weight: bold;
+}
+
+#container {
+  padding: 1em 3% 4em 3%;
+  min-width: 706px;
+  width: 94%;
+}
+#footer {
+  padding: 0.3em 5em;
+  background-color: #BFD730;
+  display: table;
+  width: 100%;
+  position: fixed;
+  bottom: 2em;
+  border: 1px solid #9EB422;
+}
+#footer > h2 {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+}
+#footer > img {
+  height: 36px;
+  display: table-cell;
+  width: 130px;
+}
+
+.half {
+  width: 48%;
+  min-width: 390px;
+  display: inline-block;
+}
+.third {
+  width: 31%;
+  min-width: 260px;
+  display: inline-block;
+  padding-left: 2%
+}
+
+.green {
+  background-color: #BFD730;
+}
+.black {
+  background-color: #000000;
+}
+.white {
+  background-color: #FFFFFF;
+}
+.gray {
+  background-color: #888888;
+}
+.red {
+  background-color: #EE252A;
+}
+.orange {
+  background-color: #F68822;
+}
+.yellow {
+  background-color: #F7C016;
+}
+.aqua {
+  background-color: #29ADE4;
+}
+.blue {
+  background-color: #1369B3;
+}
+.purple {
+  background-color: #A058A0;
+}
+.violet {
+  background-color: #9898CB;
+}
+.pink {
+  background-color: #EC148E;
+}
+
+.frame {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 3px;
+  float: left;
+  margin-right: 1em;
+  background-color: #FFFFFF;
+}
+.name {
+  line-height: 100%;
+  display: inline-block;
+}
+.user {
+  line-height: 100%;
+  display: inline-block;
+}
+.user::before {
+  content: "@";
+}
+
+.item {
+  vertical-align: top;
+  background: url(border.png) no-repeat 0 0;
+  padding: 0.5em 0 0 0.8em;
+}
+.item > * {
+  clear: both;
+  display: table;
+}
+.item p {
+  width: 50%;
+  line-height: 180%;
+  padding: 1em 0.5em 0 0;
+  display: table-cell;
+}
+.third.item p {
+  display: block;
+}
+.media {
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+.third .media {
+  display: block;
+}
+.media > img {
+  max-width: 100%;
+}
+
+.big.item > * {
+  margin-top: 0.3em;
+  width: 100%;
+}
+.big .frame > img {
+  width: 100px;
+  height: 100px;
+}
+.big .name {
+  font-size: 245%;
+  margin-top: 0.2em;
+}
+.big .user {
+  font-size: 160%;
+}
+.big.item p {
+  font-size: 140%;
+}
+
+/* Classes for setting title and text colors*/
+.greentext {
+  color: #BFD730;
+}
+.blacktext {
+  color: #000000;
+}
+.whitetext {
+  color: #FFFFFF;
+}
+.graytext {
+  color: #888888;
+}
+.redtext {
+  color: #EE252A;
+}
+.orangetext {
+  color: #F68822;
+}
+.yellowtext {
+  color: #F7C016;
+}
+.aquatext {
+  color: #29ADE4;
+}
+.bluetext {
+  color: #1369B3;
+}
+.purpletext {
+  color: #A058A0;
+}
+.violettext {
+  color: #9898CB;
+}
+.pinktext {
+  color: #EC148E;
+}
+
+/* Highlight Tweet */
+.highlight {
+	font-weight:bold;
+}

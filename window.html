@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+		<title>TweetIT</title>
+	</head>
+	<body>
+
+		<div id="mainWrapper">
+
+            <ul id="tweets">
+                <!-- The services will be inserted here -->
+            </ul>
+
+        </div>
+
+		<script id="template" type="text/x-handlebars-template">
+	        <section class="tweet">
+			    <div class="userInfo" >
+			        <div class="date">Date {{created_at_parsed}}</div>
+
+			        <div class="name">
+			            <h1>{{user.name}}</h1>
+			            <h2>@{{user.screen_name}}</h2>
+			        </div>
+			    </div>
+
+			    <div class="tweetContent">
+			        <div class="tweetText">
+			            {{text}}
+			        </div>
+
+			        <div class="tweetImage">
+			            <img ng-src="{{tweet_image_base64}}" />
+			        </div>
+			    </div>
+			</section>
+		</script>
+
+		<script type="text/javascript" src="scripts/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="scripts/underscore-min.js"></script>
+		<script type="text/javascript" src="scripts/backbone-min.js"></script>
+		<script type="text/javascript" src="scripts/handlebars-v1.3.0.js"></script>
+
+		<script type="text/javascript" src="scripts/app.js"></script>
+	</body>
+</html>

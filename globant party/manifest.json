@@ -1,0 +1,20 @@
+{
+	"name": "TweetIT!",
+	"description": "Tweet!",
+	"manifest_version": 2,
+	"version": "1.0",
+	"app":  {
+		"background": {
+			"scripts": ["scripts/background.js"]
+		}
+	},
+	"permissions": [
+		"storage",
+		{"fileSystem": ["write", "retainEntries", "directory"]},
+		"notifications",
+		"webview",
+		"<all_urls>",
+		"http://*/",
+		"https://*/"
+	]
+}

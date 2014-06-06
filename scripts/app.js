@@ -12,6 +12,7 @@ $(function(){
     			view;
 
 			this.attributes.created_at_parsed = this.parseTwitterDate(createdAt);
+			this.styleText();
 
     		view = new TweetView({ model: this });
     		
@@ -36,12 +37,38 @@ $(function(){
     	parseTwitterDate: function(aDate){
 			var newDate = moment(aDate).format();
 			return newDate;
+		},
+		styleText: function() {
+			var text = this.attributes.text,
+				position = text.search('@'),
+				hash = text.slice(position);
+
+			while (position !== -1) {
+				this.attributes.text = this.attributes.text.slice(0, -hash.length);
+				hash = this.searchHtml(hash, 'span');
+				position = hash.search('@');
+				hash = hash.slice(position);
+			}
+		},
+		searchHtml: function(text, tag) {
+			text = '<'+tag+'>' + text;
+			space = text.search(' ');
+
+			if (space !== -1) {
+				text = text.slice(0, space) + '</'+tag+'>' + text.slice(space);
+			} else {
+				text += '</'+tag+'>';
+			}
+
+			this.attributes.text += text;
+
+			return text.slice(space);
 		}
     });
 
     var TweetsList = Backbone.Collection.extend({
         model: Tweet,
-        interval: '3500',
+        interval: '4000',
 
         initialize: function(){
         	var that = this;
@@ -51,7 +78,13 @@ $(function(){
 				url:'http://localhost/tweetit/?searchQuery='+searchQuery+'%20-'+filterWords+'&sinceId=&count=4',
 				success: function (data) {
 					data = jQuery.parseJSON(data);
-					
+
+					if(data.errors) {
+						if (data.errors[0].code === 88) {
+							console.log(data.errors[0].message);
+						}
+					};
+
 					$(data.statuses.reverse()).each(function() {
 						new Tweet(this);
 					});
@@ -88,9 +121,16 @@ $(function(){
         render: function(){
             var html = Handlebars.templates.tweet(this.model.attributes);
 
+            this.backgroundOrientation();
             this.$el.html(html);
             return this;
-        }
+        },
+		backgroundOrientation: function() {
+			var number = Math.floor((Math.random() * 100) + 1);
+			if (number % 2 === 0) {
+				this.$el.addClass('left-background');
+			}
+		}
     });
 
     var App = Backbone.View.extend({
@@ -104,11 +144,12 @@ $(function(){
 
 				hashtag = settings.hashtag || 'Globant';
 				$('#hashtag').val(settings.hashtag);
+				$('#header').find('strong').html(settings.hashtag);
 
 				searchQuery = settings.query || 'globant';
 				$('#query').val(settings.query);
 				
-				filterWords = settings.filterWords;
+				filterWords = settings.filterWords.replace(/\s/g, ' -');
 				$('#hide').val(settings.filterWords);
 				tweetsQuantity = settings.tweetsQuantity;
 				updateInterval = settings.updateInterval;
@@ -136,7 +177,6 @@ $(function(){
 	});
 
 	var OptionsView = Backbone.View.extend({
-		className: 'modal-background',
         events: {
             'click #saveBtn': 'save',
             'click .close': 'close',

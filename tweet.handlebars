@@ -1,0 +1,25 @@
+<div id="tweets">
+	<section class="tweet">
+		<div class="userInfo">
+			<div class="date">{{created_at_parsed}}</div>
+			<div class="image">
+				<img id="image{{id}}" />
+			</div>
+
+			<div class="name">
+				<h1>{{user.name}}</h1>
+				<h2>@{{user.screen_name}}</h2>
+			</div>
+		</div>
+
+		<div class="tweetContent">
+			<div class="tweetText">
+				{{text}}
+			</div>
+
+			<div class="tweetImage">
+				<img src="{{tweet_image_base64}}" />
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Options</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+
+<div id="options">
+
+	<div class="inputWrapper">
+		<label for="full-name" class="t1-label field-name">Event Hashtag</label>
+		<input type="text" id="hashtag" placeholder="globantParty" />
+	</div>
+
+	<div class="inputWrapper">
+		<label>Show Tweets With...</label>
+		<input type="text" id="query" placeholder="globant OR party #globantParty" />
+	</div>
+
+	<div class="inputWrapper">
+		<label>Hide Tweets Containing...</label>
+		<input type="text" id="hide" placeholder="boring ugly hungry" />
+	</div>
+
+	<div class="inputWrapper">
+		<label>Show timestamp...</label>
+		<input type="checkbox" id="timestamp" />
+	</div>
+
+	<!--
+	<div class="inputWrapper">
+
+		<label>How Many Tweets
+		<input type="number" id="tweetsQuantity" min="1" max="5" />
+		</label>
+
+	</div>
+
+
+	<div class="inputWrapper">
+
+		<label>Update Interval
+		<input type="number" id="updateInterval" min="5" max="30" step="1" />
+		</label>
+
+	</div>
+
+	-->
+
+</div>
+
+<div id="colorsSection" class="section">
+
+
+</div>
+
+
+<a href="#" id="saveBtn">Save</a>
+<a href="#" id="deleteDB">Delete DB</a>
+
+	<script src="scripts/vendor/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<!--<script src="scripts/options.js" type="text/javascript"></script>-->
+</body>
+</html>

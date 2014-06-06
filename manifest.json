@@ -1,0 +1,24 @@
+{
+    "name": "TweetIT!",
+    "description": "Tweet!",
+    "manifest_version": 2,
+    "version": "0.1",
+    "app":  {
+        "background": {
+            "scripts": ["scripts/background.js"]
+        }
+    },
+    "icons": {
+        "128": "images/tweetit.png"
+    },
+    "permissions": [
+        "storage",
+        {"fileSystem": ["write", "retainEntries", "directory"]},
+        "notifications",
+        "webview",
+        "<all_urls>",
+        "http://*/",
+        "https://*/",
+        "http://pbs.twimg.com/profile_images/*"
+    ]
+}

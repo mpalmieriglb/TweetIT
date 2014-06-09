@@ -6,17 +6,21 @@
     </div>
 
     <div class="inputWrapper">
-        <label>Show Tweets With...</label>
-        <input type="text" id="query" placeholder="globant OR party #globantParty" value="{{query}}" />
+        <label>Show Tweets With</label>
+        <input type="text" id="query" placeholder="globant OR party globantParty" value="{{query}}" />
     </div>
 
     <div class="inputWrapper">
-        <label>Hide Tweets Containing...</label>
+        <label>Hide Tweets Containing</label>
         <input type="text" id="hide" placeholder="boring ugly hungry" value="{{filterWords}}" />
     </div>
 
+    <div class="inputWrapper">
+        <label>Update Interval</label>
+        <input type="text" id="updateInterval" placeholder="in milliseconds" value="{{updateInterval}}" />
+    </div>
+
     <button><a href="#" id="saveBtn">Save</a></button>
-    <button><a href="#" id="deleteDB">Delete DB</a></button>
 </div>
 
 <div class="modal-background">asd</div>

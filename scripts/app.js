@@ -1,10 +1,11 @@
 $(function(){
 	var tweets,
-		hashtag,
-		searchQuery,
+		hashtag = 'Globant',
+		searchQuery = 'globant',
 		filterWords,
 		tweetsQuantity,
-		updateInterval;
+		updateInterval,
+		OptionsModel;
 
     var Tweet = Backbone.Model.extend({
     	initialize: function() {
@@ -12,10 +13,11 @@ $(function(){
     			view;
 
 			this.attributes.created_at_parsed = this.parseTwitterDate(createdAt);
-			this.styleText();
+			this.styleText('@', 'span');
+			this.styleText('#', 'span');
+			this.styleText('http', 'span');
 
     		view = new TweetView({ model: this });
-    		
            	$('#tweets').prepend(view.render().el);
 
     		this.getImage();
@@ -38,15 +40,15 @@ $(function(){
 			var newDate = moment(aDate).format();
 			return newDate;
 		},
-		styleText: function() {
+		styleText: function(symbol, label) {
 			var text = this.attributes.text,
-				position = text.search('@'),
+				position = text.search(symbol),
 				hash = text.slice(position);
 
 			while (position !== -1) {
 				this.attributes.text = this.attributes.text.slice(0, -hash.length);
-				hash = this.searchHtml(hash, 'span');
-				position = hash.search('@');
+				hash = this.searchHtml(hash, label);
+				position = hash.search(symbol);
 				hash = hash.slice(position);
 			}
 		},
@@ -68,27 +70,28 @@ $(function(){
 
     var TweetsList = Backbone.Collection.extend({
         model: Tweet,
-        interval: '4000',
+        interval: '5000',
 
         initialize: function(){
         	var that = this;
 
+        	this.interval = updateInterval;
+
             $.ajax({
 				type: 'GET',
-				url:'http://localhost/tweetit/?searchQuery='+searchQuery+'%20-'+filterWords+'&sinceId=&count=4',
+				url:'http://mpalmieriglb.byethost24.com/?searchQuery='+searchQuery+'%20-'+filterWords+'&sinceId=&count=4',
 				success: function (data) {
 					data = jQuery.parseJSON(data);
 
 					if(data.errors) {
-						if (data.errors[0].code === 88) {
-							console.log(data.errors[0].message);
-						}
-					};
+						console.log(data.errors[0].message);
+					} else {
+						$(data.statuses.reverse()).each(function() {
+							new Tweet(this);
+						});
+						that.addNewTweet();
+					}
 
-					$(data.statuses.reverse()).each(function() {
-						new Tweet(this);
-					});
-					that.addNewTweet();
 				}
 			});
         },
@@ -100,15 +103,19 @@ $(function(){
 
 	    		$.ajax({
 					type: 'GET',
-					url:'http://localhost/tweetit/?searchQuery='+searchQuery+'&sinceId='+LastTweetID+'&count=',
+					url:'http://mpalmieriglb.byethost24.com/?searchQuery='+searchQuery+'&sinceId='+LastTweetID+'&count=',
 					success: function (data) {
 						data = jQuery.parseJSON(data);
 
-						$(data.statuses.reverse()).each(function() {
-							if (this.id !== LastTweetID) {
-								new Tweet(this);
-							}
-						});						
+						if(data.errors) {
+							console.log(data.errors[0].message);
+						} else {
+							$(data.statuses.reverse()).each(function() {
+								if (this.id !== LastTweetID) {
+									new Tweet(this);
+								}
+							});							
+						}
 					}
 				});
         	}, this.interval);
@@ -117,7 +124,9 @@ $(function(){
 
     var TweetView = Backbone.View.extend({
         tagName: 'li',
-
+        events: {
+        	'click': 'removeTweet'
+        },
         render: function(){
             var html = Handlebars.templates.tweet(this.model.attributes);
 
@@ -130,51 +139,72 @@ $(function(){
 			if (number % 2 === 0) {
 				this.$el.addClass('left-background');
 			}
+		},
+		removeTweet: function() {
+			this.remove();
+			//tweets.remove(this.model);			
 		}
     });
 
     var App = Backbone.View.extend({
-        el: $('#mainWrapper'),
-
+        el: $('#TweetIT'),
+        events: {
+        	'click .fullscreen': 'toFullScreen',
+        	'click .options': 'showOptions',
+        },
         initialize: function(){
-        	this.startChromeApp();            
+        	this.startChromeApp();
         },
         startChromeApp: function() {
+        	OptionsModel = new Backbone.Model();
+
         	chrome.storage.local.get(function(settings) {
 
-				hashtag = settings.hashtag || 'Globant';
-				$('#hashtag').val(settings.hashtag);
+				hashtag = settings.hashtag;
 				$('#header').find('strong').html(settings.hashtag);
 
-				searchQuery = settings.query || 'globant';
-				$('#query').val(settings.query);
+				searchQuery = settings.query;
 				
-				filterWords = settings.filterWords.replace(/\s/g, ' -');
-				$('#hide').val(settings.filterWords);
+				filterWords = settings.filterWords.replace(/\s/g, '+-');
+				
 				tweetsQuantity = settings.tweetsQuantity;
+
 				updateInterval = settings.updateInterval;
+
+				if(updateInterval < 5000) {
+					updateInterval = 5000;
+				}
 
 				OptionsModel = new Backbone.Model(settings);
 				tweets = new TweetsList();
 			});
+			
+
         },
-    });
+        toFullScreen: function() {
+			if (chrome.app.window.current().isFullscreen()) {
+				chrome.app.window.current().restore()
+			} else {
+				chrome.app.window.current().fullscreen()
+			}
+        },
+        showOptions: function() {
+	    	var options = new OptionsView({ model: OptionsModel });
+	    	options.show();
+        },
+        msToTime: function(duration) {
+		    var milliseconds = parseInt((duration%1000)/100)
+		        , seconds = parseInt((duration/1000)%60)
+		        , minutes = parseInt((duration/(1000*60))%60)
+		        , hours = parseInt((duration/(1000*60*60))%24);
 
-    new App();
+		    hours = (hours < 10) ? "0" + hours : hours;
+		    minutes = (minutes < 10) ? "0" + minutes : minutes;
+		    seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-	$('.fullscreen').click(function(){
-		if (chrome.app.window.current().isFullscreen()) {
-			chrome.app.window.current().restore()
-		} else {
-			chrome.app.window.current().fullscreen()
+		    return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 		}
-	});
-
-
-	$('.options').click(function(){
-    	var options = new OptionsView({ model: OptionsModel });
-    	options.show();
-	});
+    });
 
 	var OptionsView = Backbone.View.extend({
         events: {
@@ -201,7 +231,6 @@ $(function(){
 				hide = $('#hide').val(),
 				tweetsQuantity = $('#tweetsQuantity').val();
 				updateInterval = $('#updateInterval').val();
-				timestamp = $("#timestamp").is(":checked");
 
 			// Save it using the Chrome extension storage API.
 			chrome.storage.local.set({
@@ -209,20 +238,13 @@ $(function(){
 				'filterWords': hide,
 				'hashtag': hashtag,
 				'tweetsQuantity': tweetsQuantity,
-				'updateInterval': updateInterval,
-				'timestamp' : timestamp
+				'updateInterval': updateInterval
 			},
 			function() {
-				// Notify that we saved.
-				//message('Settings saved');
-				console.log('setting saveee', timestamp);
-
-				if (deleteDB) {
-					chrome.runtime.reload();
-				} else {
-					chrome.app.window.current().close();
-				}
+				chrome.runtime.reload();				
 			});			
         }
     });    
+
+    new App();
 });
